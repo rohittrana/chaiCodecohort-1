@@ -1,51 +1,38 @@
-const teas = ["Green Tea ","Black Tea" ,"oolong Tea","white Tea","Herbal tea"];
-console.log(teas);
-
-
-teas.push("Chamomile Tea");
+const teas = [ "green Tea","harble Tea","orange Tea","black Tea","oolang Tea","masla tea" ,]
+// console.log(teas);
+teas.push("chamomile Tea");
 
 const index = teas.indexOf("oolang Tea");
-if(index >-1){
+// console.log(index);
+if(index>-1){
                teas.splice(index,1);
 }
-const caffinatedTeas = teas.filter(tea => tea!=="Herbal tea");
-console.log(caffinatedTeas);
 
-console.log(teas.sort());
+// console.log(teas);
+ const cafinated = teas.filter((tea)=>tea !=="harble Tea")
+console.log(cafinated);
 
+console.log(cafinated.sort());
+
+teas.forEach((Element,index)=>{
+               console.log(`${Element} and index of element ${index}`);
+})
+
+let longtestTea = ""
 for(let i =0;i<teas.length;i++){
+               if(teas[i].length >longtestTea.length){
+                              longtestTea = teas[i];
+               }
+}
+console.log(longtestTea);
+
+for(let i=teas.length-1;i>0;i--){
                console.log(teas[i]);
 }
 
-let caffinatedTea = 0;
-for(let i =0;i<teas.length ;i++){
-               if(teas[i] !== "Herbal Tea");
-               {
-                              caffinatedTea ++;
-               }
-}
-
-
-console.log(caffinatedTea);
-
-const uppercaseTeas =[];
+let uppercaseteas =[];
 for(let i =0;i<teas.length;i++){
-               uppercaseTeas.push(teas[i].toLocaleUpperCase());
+               uppercaseteas.push(teas[i].toUpperCase());
+
 }
-
-console.log(uppercaseTeas);
-
-
-let longestTea = "";
-for(let i =0;i<teas.legnth;i++){
-               if(teas[i].length > longestTea.length){
-                              longestTea = teas[i];
-               }
-}
-console.log(longestTea);
-
-const reversedArray = [];
-for(let i =0;i<teas.length-1;i--){
-             reversedArray.push(teas[i]);
-}
-console.log(reversedArray);
+console.log(uppercaseteas);

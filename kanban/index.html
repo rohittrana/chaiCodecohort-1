@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Kanban Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .board {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            width: 250px;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px gray;
+        }
+        .task {
+            background: lightblue;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: grab;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 3px 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .add-task {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kanban Board</h2>
+    <div class="board">
+        <div class="column" id="todo">
+            <h3>To Do</h3>
+            <button onclick="addTask('todo')">+ Add Task</button>
+        </div>
+        <div class="column" id="inprogress">
+            <h3>In Progress</h3>
+            <button onclick="addTask('inprogress')">+ Add Task</button>
+        </div>
+        <div class="column" id="done">
+            <h3>Done</h3>
+            <button onclick="addTask('done')">+ Add Task</button>
+        </div>
+    </div>
+    <script>
+        function saveTasks() {
+            const boardState = {};
+            document.querySelectorAll('.column').forEach(column => {
+                boardState[column.id] = Array.from(column.children)
+                    .filter(child => child.classList.contains('task'))
+                    .map(task => task.textContent.replace('❌', '').trim());
+            });
+            localStorage.setItem('kanbanBoard', JSON.stringify(boardState));
+        }
+        
+        function loadTasks() {
+            const boardState = JSON.parse(localStorage.getItem('kanbanBoard')) || {};
+            Object.keys(boardState).forEach(columnId => {
+                const column = document.getElementById(columnId);
+                boardState[columnId].forEach(taskText => {
+                    addTask(columnId, taskText);
+                });
+            });
+        }
+        
+        function addTask(columnId, taskText = '') {
+            const column = document.getElementById(columnId);
+            const task = document.createElement('div');
+            task.classList.add('task');
+            task.draggable = true;
+            task.innerHTML = `${taskText || prompt('Enter task:')} <button class='delete-btn'>❌</button>`;
+            
+            task.querySelector('.delete-btn').addEventListener('click', () => {
+                task.remove();
+                saveTasks();
+            });
+            
+            task.addEventListener('dragstart', () => task.classList.add('dragging'));
+            task.addEventListener('dragend', () => {
+                task.classList.remove('dragging');
+                saveTasks();
+            });
+            
+            column.appendChild(task);
+            saveTasks();
+        }
+        
+        document.querySelectorAll('.column').forEach(column => {
+            column.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const draggedTask = document.querySelector('.dragging');
+                if (draggedTask) column.appendChild(draggedTask);
+            });
+        });
+        
+        loadTasks();
+    </script>
+</body>
+</html>
