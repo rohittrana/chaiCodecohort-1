@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
-    <style>
-      #parent {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 80px auto;
-        padding: 20px;
-        max-width: 300px;
-        border: 4px solid black;
-        font-size: 24px;
-      }
 
-      #input {
-        width: 90%;
-        padding: 10px;
-        margin-bottom: 20px;
-        font-size: 24px;
-        text-align: right;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <style>
+    #parent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 80px auto;
+      padding: 20px;
+      max-width: 300px;
+      border: 4px solid black;
+      font-size: 24px;
+    }
 
-      .grid-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        width: 100%;
-      }
+    #input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: right;
+    }
 
-      .grid-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        cursor: pointer;
-      }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
 
-      .grid-item:hover {
-        background-color: #e0e0e0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="parent">
-      <input type="text" placeholder="0" id="input" />
-      <div class="grid-container">
-        <div class="grid-item" id="item-1">1</div>
-        <div class="grid-item" id="item-2">2</div>
-        <div class="grid-item" id="item-3">3</div>
-        <div class="grid-item" id="item-4">4</div>
-        <div class="grid-item" id="item-5">5</div>
-        <div class="grid-item" id="item-6">6</div>
-        <div class="grid-item" id="item-7">7</div>
-        <div class="grid-item" id="item-8">8</div>
-        <div class="grid-item" id="item-9">9</div>
-        <div class="grid-item" id="add">+</div>
-        <div class="grid-item" id="item-0">0</div>
-        <div class="grid-item" id="sub">-</div>
-        <div class="grid-item" id="mult">*</div>
-        <div class="grid-item" id="div">/</div>
-        <div class="grid-item" id="eql">=</div>
-        <div class="grid-item" id="reset">AC</div>
-        <div class="grid-item" id="back">🔙</div>
-      </div>
+    .grid-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .grid-item:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <input type="text" placeholder="0" id="input" />
+    <div class="grid-container">
+      <div class="grid-item" id="item-1">1</div>
+      <div class="grid-item" id="item-2">2</div>
+      <div class="grid-item" id="item-3">3</div>
+      <div class="grid-item" id="item-4">4</div>
+      <div class="grid-item" id="item-5">5</div>
+      <div class="grid-item" id="item-6">6</div>
+      <div class="grid-item" id="item-7">7</div>
+      <div class="grid-item" id="item-8">8</div>
+      <div class="grid-item" id="item-9">9</div>
+      <div class="grid-item" id="add">+</div>
+      <div class="grid-item" id="item-0">0</div>
+      <div class="grid-item" id="sub">-</div>
+      <div class="grid-item" id="mult">*</div>
+      <div class="grid-item" id="div">/</div>
+      <div class="grid-item" id="eql">=</div>
+      <div class="grid-item" id="reset">AC</div>
+      <div class="grid-item" id="back">🔙</div>
     </div>
+  </div>
 
-    <script src="cal.js"></script>
-  </body>
+  <script src="cal.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+  </head>
+  <style>
+    button:hover {
+      background-color: #2980b9;
+      color: #ecf0f1;
+    }
+  </style>
+  <body>
+    <div
+      style="
+        height: 100vh;
+        background-color: #34495e;
+        color: #ecf0f1;
+        margin: 0;
+        padding: 0;
+      "
+    >
+      <h1 style="display: flex; justify-content: center">BMI CALCULATOR</h1>
+
+      <div style="display: flex; justify-content: center; margin-top: 20px; gap: 20px">
+        <label for="WEIGHT">WEIGHT (kg)</label>
+        <input type="number" id="WEIGHT" placeholder="Weight in kg" />
+
+        <label for="HEIGHT">HEIGHT (m)</label>
+        <input type="number" id="HEIGHT" placeholder="Height in meters" />
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-top: 80px">
+        <button style="border-radius: 20px; border-style: none" id="calculate">CALCULATE</button>
+      </div>
+
+      <div style="display: flex; margin: 120px; justify-content: center">
+        <button id="output" style="height: 30px; width: 120px; border-radius: 20px; border-style: none"></button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const weightInput = document.getElementById("WEIGHT");
+    const heightInput = document.getElementById("HEIGHT");
+    const calculateButton = document.getElementById("calculate");
+    const output = document.getElementById("output");
+
+    calculateButton.addEventListener("click", () => {
+      const weight = parseFloat(weightInput.value);
+      const height = parseFloat(heightInput.value);
+
+      if (!weight || !height || height <= 0) {
+        output.innerText = "Invalid input";
+        return;
+      }
+
+      const bmi = (weight / (height * height)).toFixed(2); // BMI formula
+
+      output.innerText = `BMI: ${bmi}`;
+    });
+  </script>
+</html>

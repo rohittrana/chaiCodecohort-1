@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+               <meta charset="UTF-8" />
+               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+               <title>Document</title>
+</head>
+
+<body>
+               <label for="todo">todo</label>
+               <input type="text" placeholder="Enter your name" id="name" />
+               <br>
+               <br>
+               <button id="submit">submit</button>
+               <ul id="output">
+                              
+               </ul>
+               <script>
+                              const inp = document.getElementById("name");
+                              const sub = document.getElementById("submit");
+                              const out = document.getElementById("output");
+
+                              sub.addEventListener("click", () => {
+                                             const text = inp.value;
+                                             const li = document.createElement('li');
+                                             li.innerText = text
+                                             out.append(li);
+                              });
+               </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Sharing</title>
+  </head>
+  <body>
+    <label for="title">Title</label>
+    <input type="text" placeholder="Recipe Title" id="title" />
+    <br />
+    <label for="Description">description</label>
+    <input type="text" placeholder="write description" id="description" />
+    <br />
+    <button id="submit">submit</button>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        background-color: #74b9ff;
+        color: #dfe6e9;
+        height: 50vh;
+      "
+    >
+      <ul id="output" style="border: 2px solid black; width: 40%;"></ul>
+    </div>
+
+    <script>
+      const title = document.getElementById("title");
+      const description = document.getElementById("description");
+      const submit = document.getElementById("submit");
+      const output = document.getElementById("output");
+      submit.addEventListener("click", () => {
+        if (title === "" || description === "") {
+          return alert("you haven't enter either title or description");
+        } else {
+          const text = title.value;
+          const textwo = description.value;
+          const li = document.createElement("li");
+          const div = document.createElement("div");
+          li.innerText = text;
+          div.innerText = textwo;
+          output.append(li);
+          output.appendChild(div);
+          title.value = "";
+          description.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
