@@ -15,7 +15,7 @@ function updateClock() {
     month: "long",
     day: "numeric",
   };
-  timeElement.textContent = `${hours}:${minitus} :${seconds} :${ampm}`;
+  timeElement.textContent = ` ${hours} : ${minitus} : ${seconds} : ${ampm}`;
 
   dateElement.textContent = now.toLocaleDateString(undefined, options);
 }
