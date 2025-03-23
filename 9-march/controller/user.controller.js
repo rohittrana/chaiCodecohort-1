@@ -1,11 +1,15 @@
 const registerUser = async (req,res)=>{
-               const username = req.body.username;
+               const name = req.body.username;
                const email = req.body.email;
                const password = req.body.password;
                if(!username ||!email ||!password){
-                              return status(401).send("error fill the credentials");
+                              return res.status(401).json({
+                                             msg:"Error you need fill all the requirement "
+                              });
                }
-              
+              else{
+               
+              }
 }
 
 
